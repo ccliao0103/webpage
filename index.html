@@ -342,7 +342,7 @@ footer {
 .footer-text { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.22); }
 
 /* REVEAL */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
 @media (max-width: 960px) {
@@ -382,7 +382,7 @@ footer {
     <div class="hero-info">
       <div class="info-row"><span class="info-dot">▸</span><span>Department of Chemistry, Fu Jen Catholic University</span></div>
       <div class="info-row"><span class="info-dot">▸</span><span>National Taiwan Normal University, Chemistry</span></div>
-      <div class="info-row"><span class="info-dot">▸</span><span>165804@mail.fju.edu.tw</span></div>
+      <div class="info-row"><span class="info-dot">▸</span><span id="hero-email"></span></div>
     </div>
 
     <div class="hero-tags">
@@ -756,7 +756,7 @@ footer {
       <div class="contact-items">
         <div class="contact-row">
           <span class="contact-tag">EMAIL</span>
-          <div class="contact-val"><a href="mailto:165804@mail.fju.edu.tw">165804@mail.fju.edu.tw</a></div>
+          <div class="contact-val" id="contact-email"></div>
         </div>
         <div class="contact-row">
           <span class="contact-tag">DEPT</span>
@@ -786,20 +786,30 @@ footer {
   <span class="footer-text">Fu Jen Catholic University · Department of Chemistry</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email
+
 <script>
+// Email: built dynamically to prevent scraping
+(function() {
+  var u = '165804', d = 'mail.fju.edu.tw';
+  var addr = u + '@' + d;
+  var link = '<a href="mailto:' + addr + '" style="color:inherit">' + addr + '</a>';
+  var h = document.getElementById('hero-email');
+  var c = document.getElementById('contact-email');
+  if (h) h.innerHTML = link;
+  if (c) c.innerHTML = '<a href="mailto:' + addr + '" style="color:rgba(244,239,228,0.75)">' + addr + '</a>';
+})();
+
+// Scroll reveal
 const items = document.querySelectorAll('.reveal');
-const fallback = setTimeout(() => {
-  items.forEach(el => el.classList.add('visible'));
-}, 600);
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
-      clearTimeout(fallback);
-      setTimeout(() => e.target.classList.add('visible'), i * 40);
+      setTimeout(() => e.target.classList.add('visible'), i * 50);
       obs.unobserve(e.target);
     }
   });
-}, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0, rootMargin: '0px 0px -30px 0px' });
 items.forEach(el => obs.observe(el));
 </script>
+</body>
+</html>
