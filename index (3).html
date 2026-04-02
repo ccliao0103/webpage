@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chen-Cheng Liao | 廖振成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f4efe4;
+  --cream-2: #ede8dc;
+  --cream-3: #e6e0d2;
+  --navy: #1a2332;
+  --navy-2: #2c3e52;
+  --orange: #c85a1e;
+  --orange-light: #e06b2a;
+  --orange-pale: #faeee6;
+  --blue: #2a5885;
+  --blue-pale: #e4edf5;
+  --muted: #6b6455;
+  --border: #d4ccbc;
+  --white: #faf8f3;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(42,88,133,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42,88,133,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px; height: 56px;
+  background: rgba(244,239,228,0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; letter-spacing: 0.18em; color: var(--orange);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; color: var(--muted); text-decoration: none;
+  letter-spacing: 0.06em; transition: color 0.18s;
+}
+.nav-links a:hover { color: var(--orange); }
+
+/* HERO */
+header {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 100px 100px 80px;
+  position: relative; overflow: hidden; z-index: 1;
+}
+header::after {
+  content: '';
+  position: absolute; right: 0; top: 0;
+  width: 38%; height: 100%;
+  background: var(--cream-2);
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+
+.hero-text { position: relative; z-index: 1; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; letter-spacing: 0.18em; color: var(--orange);
+  border: 1px solid var(--orange);
+  padding: 5px 14px; margin-bottom: 32px;
+}
+.hero-badge::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--orange); border-radius: 50%;
+  animation: blink 2.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(52px, 6.5vw, 90px);
+  font-weight: 400; line-height: 1.05;
+  letter-spacing: -0.01em; margin-bottom: 8px;
+}
+h1 em { font-style: italic; color: var(--orange); }
+
+.hero-chinese {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(52px, 6.5vw, 90px);
+  font-weight: 400; color: var(--navy);
+  letter-spacing: 0.06em; margin-bottom: 28px;
+  line-height: 1.05;
+}
+
+.hero-subtitle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13.5px; color: var(--muted);
+  letter-spacing: 0.14em; margin-bottom: 32px;
+}
+
+.hero-info { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.info-row { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; color: var(--muted); }
+.info-dot { color: var(--orange); font-size: 11px; margin-top: 6px; }
+
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+.tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; letter-spacing: 0.08em;
+  color: var(--blue); background: var(--blue-pale);
+  padding: 4px 12px; border: 1px solid rgba(42,88,133,0.2);
+}
+
+.hero-cta { display: flex; gap: 12px; }
+.btn {
+  display: inline-block; padding: 12px 26px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; letter-spacing: 0.1em; text-decoration: none;
+  transition: all 0.18s;
+}
+.btn-primary { background: var(--navy); color: var(--cream); }
+.btn-primary:hover { background: var(--orange); }
+.btn-outline { border: 1.5px solid var(--navy); color: var(--navy); }
+.btn-outline:hover { background: var(--navy); color: var(--cream); }
+
+/* SECTIONS */
+section { padding: 96px 100px; position: relative; z-index: 1; }
+section:nth-child(even) { background: var(--white); }
+
+.section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; }
+.section-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; color: var(--orange); letter-spacing: 0.2em;
+}
+h2 { font-family: 'Libre Baskerville', serif; font-size: 38px; font-weight: 400; }
+.section-line { flex: 1; height: 1px; background: var(--border); }
+
+/* RESEARCH */
+.research-intro {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 18px; font-style: italic;
+  color: var(--muted); max-width: 820px;
+  margin-bottom: 44px; line-height: 1.75;
+}
+.research-intro strong { color: var(--orange); font-style: normal; }
+
+.research-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); }
+.research-card {
+  padding: 30px 26px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.18s;
+}
+.research-card:nth-child(3n) { border-right: none; }
+.research-card:nth-child(4),
+.research-card:nth-child(5),
+.research-card:nth-child(6) { border-bottom: none; }
+.research-card:hover { background: var(--orange-pale); }
+.research-card.featured {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; gap: 10px;
+  background: var(--orange-pale);
+}
+
+.research-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; color: var(--orange);
+  letter-spacing: 0.15em; margin-bottom: 10px;
+}
+.research-card h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 19px; font-weight: 700;
+  margin-bottom: 10px; line-height: 1.35;
+}
+.research-card .en { font-size: 12.5px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em; margin-bottom: 10px; }
+.research-card p { font-size: 14.5px; color: var(--muted); line-height: 1.7; }
+.research-card ul { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
+.research-card ul li {
+  font-size: 14px; color: var(--muted);
+  padding-left: 14px; position: relative;
+}
+.research-card ul li::before { content: '·'; position: absolute; left: 0; color: var(--orange); }
+
+/* PUBLICATIONS */
+.pub-list { display: flex; flex-direction: column; }
+.pub-item {
+  display: grid; grid-template-columns: 52px 1fr;
+  gap: 20px; padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.15s;
+}
+.pub-item:hover { background: var(--orange-pale); padding: 22px 16px; margin: 0 -16px; border-radius: 2px; border-color: transparent; }
+.pub-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; color: var(--orange);
+  padding-top: 2px; letter-spacing: 0.12em;
+}
+.pub-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 17px; font-weight: 700; margin-bottom: 6px; line-height: 1.45;
+}
+.pub-authors { font-size: 14px; color: var(--muted); margin-bottom: 5px; }
+.pub-authors strong { color: var(--navy); }
+.pub-journal { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--blue); }
+.pub-badges { display: flex; gap: 7px; margin-top: 9px; flex-wrap: wrap; }
+.badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px; padding: 2px 9px; letter-spacing: 0.05em;
+}
+.badge-year { background: var(--cream-2); color: var(--muted); border: 1px solid var(--border); }
+.badge-doi { background: var(--blue-pale); color: var(--blue); text-decoration: none; border: 1px solid rgba(42,88,133,0.2); }
+.badge-doi:hover { background: var(--blue); color: white; }
+
+/* TIMELINE */
+.timeline { padding-left: 28px; position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 10px; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.timeline-item { position: relative; margin-bottom: 44px; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -32px; top: 8px;
+  width: 9px; height: 9px; background: var(--orange);
+  border: 2.5px solid var(--cream);
+  box-shadow: 0 0 0 1.5px var(--orange);
+}
+.timeline-period {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; color: var(--orange);
+  letter-spacing: 0.12em; margin-bottom: 6px;
+}
+.timeline-role { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.timeline-org { font-size: 15px; color: var(--muted); margin-bottom: 8px; }
+.timeline-desc { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 580px; }
+
+/* EDUCATION */
+.edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.edu-card {
+  background: var(--cream); border: 1px solid var(--border);
+  border-top: 3px solid var(--navy); padding: 28px;
+}
+.edu-degree { font-family: 'Libre Baskerville', serif; font-size: 32px; font-weight: 700; color: var(--orange); margin-bottom: 10px; }
+.edu-school { font-weight: 500; font-size: 16px; margin-bottom: 3px; }
+.edu-dept { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+.edu-period { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+
+/* PRESENTATIONS */
+.pres-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pres-item {
+  background: var(--cream); border: 1px solid var(--border);
+  border-left: 3px solid var(--orange); padding: 16px 18px;
+}
+.pres-year { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--orange); margin-bottom: 6px; }
+.pres-title { font-size: 15px; font-weight: 500; margin-bottom: 5px; line-height: 1.45; }
+.pres-venue { font-size: 13px; color: var(--muted); }
+.pres-type {
+  display: inline-block; margin-top: 7px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; padding: 2px 8px; letter-spacing: 0.08em;
+  background: var(--blue-pale); color: var(--blue);
+  border: 1px solid rgba(42,88,133,0.2);
+}
+
+/* TEACHING */
+.courses-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.course-group h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; color: var(--orange); letter-spacing: 0.18em;
+  margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+}
+.course-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.course-list li { font-size: 15px; color: var(--muted); padding-left: 18px; position: relative; }
+.course-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-size: 12px; }
+
+/* CONTACT */
+#contact { background: var(--navy); }
+#contact .section-num { color: #e07040; }
+#contact h2 { color: var(--cream); }
+#contact .section-line { background: rgba(255,255,255,0.1); }
+
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.contact-intro {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 21px; font-style: italic; font-weight: 400;
+  color: rgba(244,239,228,0.65); line-height: 1.65; margin-bottom: 32px;
+}
+.contact-items { display: flex; flex-direction: column; gap: 18px; }
+.contact-row { display: flex; align-items: flex-start; gap: 14px; }
+.contact-tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  color: #e07040; letter-spacing: 0.12em; margin-top: 3px; white-space: nowrap;
+}
+.contact-val { font-size: 15px; color: rgba(244,239,228,0.75); }
+.contact-val a { color: inherit; text-decoration: none; }
+.contact-val a:hover { color: var(--cream); }
+
+.ext-links { display: flex; flex-direction: column; gap: 10px; }
+.ext-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  text-decoration: none; color: rgba(244,239,228,0.75);
+  font-size: 15px; transition: all 0.18s;
+}
+.ext-link:hover { background: rgba(200,90,30,0.2); border-color: var(--orange-light); color: var(--cream); }
+.ext-link-inner { display: flex; align-items: center; gap: 12px; }
+.ext-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px; color: #e07040; letter-spacing: 0.12em;
+}
+.ext-arrow { opacity: 0.3; font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
+
+footer {
+  background: #0f1620;
+  padding: 22px 100px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1;
+}
+.footer-text { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.22); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 960px) {
+  header { padding: 100px 32px 60px; }
+  header::after { display: none; }
+  section { padding: 72px 32px; }
+  nav { padding: 0 24px; }
+  .nav-links { gap: 18px; }
+  .research-grid { grid-template-columns: 1fr; border: none; }
+  .research-card { border: 1px solid var(--border); border-left: 3px solid var(--orange); margin-bottom: 8px; }
+  .edu-grid, .pres-list, .courses-grid, .contact-layout { grid-template-columns: 1fr; }
+  footer { padding: 20px 32px; flex-direction: column; gap: 6px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">CC LIAO · 廖振成</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div class="hero-text">
+    <div class="hero-badge">ASSISTANT PROFESSOR · FU JEN CATHOLIC UNIVERSITY</div>
+    <div class="hero-chinese">廖振成</div>
+    <h1>Chen-Cheng<br><em>Liao</em></h1>
+    <p class="hero-subtitle">COMPUTATIONAL CHEMISTRY &amp; MATERIALS MODELING</p>
+
+    <div class="hero-info">
+      <div class="info-row"><span class="info-dot">▸</span><span>Department of Chemistry, Fu Jen Catholic University</span></div>
+      <div class="info-row"><span class="info-dot">▸</span><span>National Taiwan Normal University, Chemistry</span></div>
+      <div class="info-row"><span class="info-dot">▸</span><span>165804@mail.fju.edu.tw</span></div>
+    </div>
+
+    <div class="hero-tags">
+      <span class="tag">DFT / First-Principles</span>
+      <span class="tag">Electrocatalysis</span>
+      <span class="tag">HER / CO₂RR</span>
+      <span class="tag">High-Entropy Alloys</span>
+      <span class="tag">Microkinetics</span>
+      <span class="tag">Machine Learning</span>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#publications" class="btn btn-primary">Publications</a>
+      <a href="#contact" class="btn btn-outline">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2>Research Interests</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <p class="research-intro reveal">
+    本實驗室的研究以<strong>計算化學與材料模擬</strong>為核心，結合理論計算、材料設計與資料分析，探討能源、催化與新穎材料的性質與反應機制。透過電腦模擬，從原子與分子層級理解材料如何運作，並進一步協助設計更有效率的功能材料。
+  </p>
+
+  <div class="research-grid">
+    <div class="research-card reveal">
+      <div class="research-num">01 ·</div>
+      <h3>高熵材料與高熵合金設計</h3>
+      <div class="en">High-Entropy Materials & Alloy Design</div>
+      <p>高熵材料由多種元素共同組成，具有複雜但可調控的結構與性質。本實驗室利用計算模擬研究高熵合金的原子排列、表面結構與反應行為，了解不同元素組合如何影響材料穩定性與催化效能，作為未來新材料設計的依據。</p>
+    </div>
+
+    <div class="research-card reveal">
+      <div class="research-num">02 ·</div>
+      <h3>能源催化與電化學反應機制</h3>
+      <div class="en">Energy Catalysis & Electrochemical Mechanisms</div>
+      <p>關注與永續能源相關的重要反應，了解催化劑表面在反應中扮演的角色，找出能提升反應效率的結構與活性位點：</p>
+      <ul>
+        <li>產氫反應（HER）</li>
+        <li>氧析出反應（OER）</li>
+        <li>二氧化碳還原反應（CO₂RR）</li>
+        <li>尿素氧化反應（UOR）</li>
+      </ul>
+    </div>
+
+    <div class="research-card reveal">
+      <div class="research-num">03 ·</div>
+      <h3>奈米材料與表面反應</h3>
+      <div class="en">Nanomaterials & Surface Reactivity</div>
+      <p>研究奈米顆粒、雙金屬奈米團簇、核殼結構等材料，探討在催化反應中的選擇性與活性，理解不同表面結構如何改變反應路徑與產物分布。</p>
+    </div>
+
+    <div class="research-card reveal">
+      <div class="research-num">04 ·</div>
+      <h3>第一原理計算與材料模擬</h3>
+      <div class="en">First-Principles Calculation & Simulation</div>
+      <p>主要使用密度泛函理論（DFT）從電子結構層級研究材料性質，回答：為何某種材料較穩定、為何某個位點反應活性較高、不同元素摻雜後電子結構如何改變。</p>
+    </div>
+
+    <div class="research-card reveal">
+      <div class="research-num">05 ·</div>
+      <h3>機器學習與資料驅動材料設計</h3>
+      <div class="en">Machine Learning for Materials Discovery</div>
+      <p>整合機器學習於化學與材料研究，利用資料分析與模型建立加速材料篩選與性質預測，在大量可能的材料組合中，更快找到值得深入研究的候選材料。</p>
+    </div>
+
+    <div class="research-card featured reveal">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:var(--orange); letter-spacing:0.18em;">NSTC FUNDED</div>
+      <div style="font-family:'Libre Baskerville',serif; font-size:15.5px; font-weight:700; line-height:1.4; color:var(--navy);">High-Entropy Pt Alloys: A Distribution-Based DFT–Microkinetic Study</div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:var(--muted); line-height:1.6;">NSTC 114-2113-M-034-001-MY2<br>2025.06 – 2027.05</div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2>Publications</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="pub-list">
+    <div class="pub-item reveal">
+      <div class="pub-num">01</div>
+      <div>
+        <div class="pub-title">The roles of various Fe–Cu bimetallic nanoclusters in controlling the C2 selectivity for the CO reduction reaction – a DFT study</div>
+        <div class="pub-authors"><strong>Chen-Cheng Liao</strong>, Meng-Chi Hsieh, Yung-Yi Huang, Cheng-Yu Tu, Chun-Chih Chang*</div>
+        <div class="pub-journal">Phys. Chem. Chem. Phys.</div>
+        <div class="pub-badges">
+          <span class="badge badge-year">2025</span>
+          <a href="https://doi.org/10.1039/d4cp04133j" class="badge badge-doi" target="_blank">DOI: 10.1039/d4cp04133j</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item reveal">
+      <div class="pub-num">02</div>
+      <div>
+        <div class="pub-title">Simultaneously Boosting Direct and Indirect Urea Oxidation of Nickel Hydroxide via Strategic Yttrium Doping</div>
+        <div class="pub-authors">Tzu-Ho Wu*, Bo-Wei Hou, Yi-Ying Lee, Meng-Che Tsai, <strong>Chen-Cheng Liao</strong>, Chun-Chih Chang</div>
+        <div class="pub-journal">ACS Applied Materials & Interfaces</div>
+        <div class="pub-badges">
+          <span class="badge badge-year">2024</span>
+          <a href="https://doi.org/10.1021/acsami.4c11951" class="badge badge-doi" target="_blank">DOI: 10.1021/acsami.4c11951</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item reveal">
+      <div class="pub-num">03</div>
+      <div>
+        <div class="pub-title">Modulating the Catalytic Selectivity for Urea Production in CO₂ and N₂ Reduction Reaction through Cu₁₉@Ru₆₀ Core/Shell Nanoparticle: A DFT Study</div>
+        <div class="pub-authors"><strong>Chen-Cheng Liao</strong>, Yung-Yi Huang, Chun-Chih Chang*</div>
+        <div class="pub-journal">J. Phys. Chem. C</div>
+        <div class="pub-badges">
+          <span class="badge badge-year">2024</span>
+          <a href="https://doi.org/10.1021/acs.jpcc.4c02331" class="badge badge-doi" target="_blank">DOI: 10.1021/acs.jpcc.4c02331</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item reveal">
+      <div class="pub-num">04</div>
+      <div>
+        <div class="pub-title">A Computational Perspective on Carbon-Carbon Bond Formation by Single Cu Atom on Pd(111) Surface for CO Electrochemical Reduction</div>
+        <div class="pub-authors"><strong>Chen-Cheng Liao</strong>, Tsung-Han Tsai, Chun-Chih Chang*, Ming-Kang Tsai*</div>
+        <div class="pub-journal">Inorganics</div>
+        <div class="pub-badges">
+          <span class="badge badge-year">2023</span>
+          <a href="https://doi.org/10.3390/inorganics11100378" class="badge badge-doi" target="_blank">DOI: 10.3390/inorganics11100378</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item reveal">
+      <div class="pub-num">05</div>
+      <div>
+        <div class="pub-title">The Use of Plate-type Electric Force Field for the Explicit Simulations of Electrochemical CO Dimerization on Cu(111) Surface</div>
+        <div class="pub-authors"><strong>Chen-Cheng Liao</strong>, Tsung-Han Tsai, Chun-Chih Chang*, Ming-Kang Tsai*</div>
+        <div class="pub-journal">Chemical Physics</div>
+        <div class="pub-badges"><span class="badge badge-year">2023</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item reveal">
+      <div class="pub-num">06</div>
+      <div>
+        <div class="pub-title">Predicting the emission wavelength of organic molecules using a combinatorial QSAR and machine learning approach</div>
+        <div class="pub-authors">Zong-Rong Ye, …, <strong>Chen-Cheng Liao</strong>, …, Ming-Kang Tsai*</div>
+        <div class="pub-journal">RSC Advances</div>
+        <div class="pub-badges"><span class="badge badge-year">2020</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item reveal">
+      <div class="pub-num">07</div>
+      <div>
+        <div class="pub-title">Superior Stability and Emission Quantum Yield (23% ± 3%) of Single-Layer 2D Tin Perovskite TEA₂SnI₄ via Thiocyanate Passivation</div>
+        <div class="pub-authors">Jin-Tai Lin, …, <strong>Chen-Cheng Liao</strong>, …, Pi-Tai Chou*</div>
+        <div class="pub-journal">Small</div>
+        <div class="pub-badges"><span class="badge badge-year">2020</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item reveal">
+      <div class="pub-num">08</div>
+      <div>
+        <div class="pub-title">Harnessing Dielectric Confinement on Tin Perovskites to Achieve Emission Quantum Yield up to 21%</div>
+        <div class="pub-authors">Jin-Tai Lin, <strong>Chen-Cheng Liao</strong>, …, Pi-Tai Chou*, Ching-Wen Chiu*</div>
+        <div class="pub-journal">J. Am. Chem. Soc.</div>
+        <div class="pub-badges"><span class="badge badge-year">2019</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item reveal">
+      <div class="pub-num">09</div>
+      <div>
+        <div class="pub-title">Highly Efficient N-Co-C Electrocatalyst on Reduced Graphene Oxide Derived from Vitamin-B12 for Hydrogen Evolution Reaction</div>
+        <div class="pub-authors">Sabhapathy Palani, <strong>Chen-Cheng Liao</strong>, …, Li-Chyong Chen*</div>
+        <div class="pub-journal">J. Materials Chemistry A</div>
+        <div class="pub-badges"><span class="badge badge-year">2019</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item reveal">
+      <div class="pub-num">10</div>
+      <div>
+        <div class="pub-title">Ethane Oxidative Dehydrogenation Mechanism on MoO₃(010) Surface: A First-Principle Study Using On-site Coulomb Correction</div>
+        <div class="pub-authors"><strong>Chen-Cheng Liao</strong>, Chun-Chih Chang, YongMan Choi*, Ming-Kang Tsai*</div>
+        <div class="pub-journal">Surface Science</div>
+        <div class="pub-badges"><span class="badge badge-year">2018</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2>Experience</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-period">2026.02 — PRESENT</div>
+      <div class="timeline-role">Assistant Professor</div>
+      <div class="timeline-org">Department of Chemistry, Fu Jen Catholic University（輔仁大學化學系）</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-period">2024.08 — 2026.01</div>
+      <div class="timeline-role">Assistant Professor</div>
+      <div class="timeline-org">Dept. of Chemical and Materials Engineering, Chinese Culture University（中國文化大學）</div>
+      <div class="timeline-desc">NSTC-funded project: High-Entropy Pt Alloys — A Distribution-Based DFT–Microkinetic Study<br>NSTC 114-2113-M-034-001-MY2 (2025.06 – 2027.05)</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-period">2023.12 — 2024.07</div>
+      <div class="timeline-role">Postdoctoral Researcher</div>
+      <div class="timeline-org">Dept. of Chemical and Materials Engineering, Chinese Culture University</div>
+      <div class="timeline-desc">CO₂ reduction selectivity on Fe–Cu clusters/CNT; C–N coupling for urea electrosynthesis using Cu–Ru core–shell nanoparticles.</div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-period">2019.02 — 2023.11</div>
+      <div class="timeline-role">PhD Researcher</div>
+      <div class="timeline-org">Department of Chemistry, NTNU · Advisor: Prof. Ming-Kang Tsai</div>
+      <div class="timeline-desc">First-principles modeling of functional materials: single-atom catalysis for CO/CO₂ reduction, field-dependent explicit-solvent simulations, dielectric and optical physics of tin-halide perovskites.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2>Education</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-degree">Ph.D.</div>
+      <div class="edu-school">National Taiwan Normal University</div>
+      <div class="edu-dept">Department of Chemistry</div>
+      <div class="edu-period">2019.02 – 2023.11</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-degree">M.Sc.</div>
+      <div class="edu-school">National Taiwan Normal University</div>
+      <div class="edu-dept">Department of Chemistry</div>
+      <div class="edu-period">2015.09 – 2019.01</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-degree">B.Sc.</div>
+      <div class="edu-school">National Taiwan Normal University</div>
+      <div class="edu-dept">Department of Chemistry</div>
+      <div class="edu-period">2011.09 – 2015.06</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESENTATIONS -->
+<section id="presentations">
+  <div class="section-header reveal">
+    <span class="section-num">05</span>
+    <h2>International Presentations</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="pres-list">
+    <div class="pres-item reveal">
+      <div class="pres-year">2024.12</div>
+      <div class="pres-title">DFT Study of Urea Oxidation on Modified Ni(OH)₂ Surfaces</div>
+      <div class="pres-venue">The 9th Asian Applied Physics Conference</div>
+      <span class="pres-type">POSTER</span>
+    </div>
+    <div class="pres-item reveal">
+      <div class="pres-year">2024.06</div>
+      <div class="pres-title">Modulating Catalytic Selectivity for Urea Production through Cu₁₉@Ru₆₀ Core/Shell Nanoparticle: A DFT Study</div>
+      <div class="pres-venue">Taiwan International Conference on Catalysis 2024</div>
+      <span class="pres-type">ORAL</span>
+    </div>
+    <div class="pres-item reveal">
+      <div class="pres-year">2019.11</div>
+      <div class="pres-title">HER by Single-Pt Electrocatalyst: Free Energy Prediction and Theoretical Current-Voltage Kinetic Analysis</div>
+      <div class="pres-venue">The 5th International Conference on Molecular Simulation</div>
+      <span class="pres-type">POSTER</span>
+    </div>
+    <div class="pres-item reveal">
+      <div class="pres-year">2017.04</div>
+      <div class="pres-title">Mechanistic Study of Hydrogen Reaction on Single-Atom Catalyst</div>
+      <div class="pres-venue">253rd ACS National Meeting</div>
+      <span class="pres-type">ORAL</span>
+    </div>
+    <div class="pres-item reveal">
+      <div class="pres-year">2015.06</div>
+      <div class="pres-title">Computational Study of U Correction for Ethane Dehydrogenation on MoO₃</div>
+      <div class="pres-venue">8th Conference of the Asian Consortium on Computational Material Science</div>
+      <span class="pres-type">ORAL + POSTER</span>
+    </div>
+    <div class="pres-item reveal">
+      <div class="pres-year">2014.12</div>
+      <div class="pres-title">Methane Oxidative Dehydrogenation Reaction on MoO₃</div>
+      <div class="pres-venue">Asian Consortium on Computational Materials Science – VO9</div>
+      <span class="pres-type">POSTER</span>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-header reveal">
+    <span class="section-num">06</span>
+    <h2>Teaching</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="courses-grid">
+    <div class="course-group reveal">
+      <h3>2025 SPRING (FEB – JUN)</h3>
+      <ul class="course-list">
+        <li>Physical Chemistry <em>(EMI)</em></li>
+        <li>Organic Chemistry</li>
+        <li>Polymer Physics and Chemistry</li>
+        <li>Introduction to Renewable Energy</li>
+        <li>Development and Application for Solar Cells</li>
+      </ul>
+    </div>
+    <div class="course-group reveal">
+      <h3>2025 FALL (SEP – DEC)</h3>
+      <ul class="course-list">
+        <li>Organic Chemistry</li>
+        <li>Instrumental Analysis (A &amp; B)</li>
+        <li>Intro to Chemical and Materials Engineering</li>
+        <li>Introduction to Renewable Energy</li>
+      </ul>
+    </div>
+    <div class="course-group reveal">
+      <h3>2024 FALL (SEP – DEC)</h3>
+      <ul class="course-list">
+        <li>Physical Chemistry <em>(EMI)</em></li>
+        <li>Organic Chemistry</li>
+        <li>Intro to Chemical and Materials Engineering</li>
+        <li>Understanding Green Energy</li>
+        <li>Introduction to Energy Sources</li>
+      </ul>
+    </div>
+    <div class="course-group reveal">
+      <h3>INSTITUTIONS</h3>
+      <ul class="course-list">
+        <li>Fu Jen Catholic University（2026.02 –）</li>
+        <li>Chinese Culture University（2024.08 – 2026.01）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-num">07</span>
+    <h2>Contact</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-layout">
+    <div>
+      <p class="contact-intro">Open to collaborations in computational electrochemistry, DFT-based catalyst design, and theory–experiment joint projects.</p>
+      <div class="contact-items">
+        <div class="contact-row">
+          <span class="contact-tag">EMAIL</span>
+          <div class="contact-val"><a href="mailto:165804@mail.fju.edu.tw">165804@mail.fju.edu.tw</a></div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-tag">DEPT</span>
+          <div class="contact-val">Department of Chemistry<br>Fu Jen Catholic University, Taiwan</div>
+        </div>
+      </div>
+    </div>
+    <div class="ext-links">
+      <a href="https://scholar.google.com" target="_blank" class="ext-link">
+        <span class="ext-link-inner"><span class="ext-tag">SCHOLAR</span> Google Scholar</span>
+        <span class="ext-arrow">→</span>
+      </a>
+      <a href="https://orcid.org" target="_blank" class="ext-link">
+        <span class="ext-link-inner"><span class="ext-tag">ORCID</span> Researcher ID</span>
+        <span class="ext-arrow">→</span>
+      </a>
+      <a href="https://www.researchgate.net" target="_blank" class="ext-link">
+        <span class="ext-link-inner"><span class="ext-tag">RG</span> ResearchGate</span>
+        <span class="ext-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-text">© 2026 Chen-Cheng Liao · 廖振成</span>
+  <span class="footer-text">Fu Jen Catholic University · Department of Chemistry</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email
+<script>
+const items = document.querySelectorAll('.reveal');
+const fallback = setTimeout(() => {
+  items.forEach(el => el.classList.add('visible'));
+}, 600);
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      clearTimeout(fallback);
+      setTimeout(() => e.target.classList.add('visible'), i * 40);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+items.forEach(el => obs.observe(el));
+</script>
