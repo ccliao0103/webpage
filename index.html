@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chen-Cheng Liao | 廖振成</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream: #f4efe4;
-  --cream-2: #ede8dc;
-  --cream-3: #e6e0d2;
-  --navy: #1a2332;
-  --navy-2: #2c3e52;
-  --orange: #c85a1e;
-  --orange-light: #e06b2a;
-  --orange-pale: #faeee6;
-  --blue: #2a5885;
-  --blue-pale: #e4edf5;
-  --muted: #6b6455;
-  --border: #d4ccbc;
-  --white: #faf8f3;
+  --cream: #f3eed8;
+  --cream-2: #ebe4c8;
+  --cream-3: #e3dabb;
+  --navy: #254d3a;
+  --navy-2: #3a6e56;
+  --orange: #8b6914;
+  --orange-light: #a67e1e;
+  --orange-pale: #ede4c0;
+  --blue: #2a6b58;
+  --blue-pale: #d8ece6;
+  --muted: #627057;
+  --border: #ccc4a0;
+  --white: #f7f2df;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,8 +38,8 @@ body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0; pointer-events: none;
   background-image:
-    linear-gradient(rgba(42,88,133,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(42,88,133,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(42,107,88,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42,107,88,0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -48,7 +48,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 56px; height: 56px;
-  background: rgba(244,239,228,0.94);
+  background: rgba(243,238,216,0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -60,10 +60,26 @@ nav {
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px; color: var(--muted); text-decoration: none;
+  font-size: 14.5px; color: var(--muted); text-decoration: none;
   letter-spacing: 0.06em; transition: color 0.18s;
 }
 .nav-links a:hover { color: var(--orange); }
+
+/* LANG TOGGLE */
+.lang-toggle {
+  display: flex; align-items: center;
+  font-family: 'IBM Plex Mono', monospace;
+  border: 1px solid var(--border); overflow: hidden; margin-left: 16px;
+}
+.lang-toggle button {
+  padding: 5px 12px; border: none; background: transparent;
+  color: var(--muted); cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;
+  letter-spacing: 0.08em; transition: all 0.15s;
+}
+.lang-toggle button:first-child { border-right: 1px solid var(--border); }
+.lang-toggle button.active { background: var(--navy); color: var(--cream); }
+.lang-toggle button:not(.active):hover { background: var(--orange-pale); color: var(--navy); }
 
 /* HERO */
 header {
@@ -87,9 +103,9 @@ header::after {
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px; letter-spacing: 0.18em; color: var(--orange);
+  font-size: 14.5px; letter-spacing: 0.14em; color: var(--orange);
   border: 1px solid var(--orange);
-  padding: 5px 14px; margin-bottom: 32px;
+  padding: 6px 16px; margin-bottom: 32px;
 }
 .hero-badge::before {
   content: ''; width: 6px; height: 6px;
@@ -104,39 +120,38 @@ h1 {
   font-weight: 400; line-height: 1.05;
   letter-spacing: -0.01em; margin-bottom: 8px;
 }
-h1 em { font-style: italic; color: var(--orange); }
 
 .hero-chinese {
-  font-family: 'Libre Baskerville', serif;
-  font-size: clamp(38px, 5vw, 68px);
-  font-weight: 400; color: var(--navy);
-  letter-spacing: 0.06em; margin-bottom: 28px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(36px, 4.8vw, 64px);
+  font-weight: 300; color: var(--navy);
+  letter-spacing: 0.12em; margin-bottom: 28px;
   line-height: 1.05;
 }
 
 .hero-subtitle {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 13.5px; color: var(--muted);
+  font-size: 14px; color: var(--muted);
   letter-spacing: 0.14em; margin-bottom: 32px;
 }
 
 .hero-info { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-.info-row { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; color: var(--muted); }
+.info-row { display: flex; align-items: flex-start; gap: 10px; font-size: 16.5px; color: var(--muted); }
 .info-dot { color: var(--orange); font-size: 11px; margin-top: 6px; }
 
 .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
 .tag {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px; letter-spacing: 0.08em;
+  font-size: 13px; letter-spacing: 0.07em;
   color: var(--blue); background: var(--blue-pale);
-  padding: 4px 12px; border: 1px solid rgba(42,88,133,0.2);
+  padding: 4px 12px; border: 1px solid rgba(42,107,88,0.25);
 }
 
 .hero-cta { display: flex; gap: 12px; }
 .btn {
   display: inline-block; padding: 12px 26px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px; letter-spacing: 0.1em; text-decoration: none;
+  font-size: 14px; letter-spacing: 0.1em; text-decoration: none;
   transition: all 0.18s;
 }
 .btn-primary { background: var(--navy); color: var(--cream); }
@@ -151,7 +166,7 @@ section:nth-child(even) { background: var(--white); }
 .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; }
 .section-num {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px; color: var(--orange); letter-spacing: 0.2em;
+  font-size: 13px; color: var(--orange); letter-spacing: 0.2em;
 }
 h2 { font-family: 'Libre Baskerville', serif; font-size: 38px; font-weight: 400; }
 .section-line { flex: 1; height: 1px; background: var(--border); }
@@ -177,28 +192,29 @@ h2 { font-family: 'Libre Baskerville', serif; font-size: 38px; font-weight: 400;
 .research-card:nth-child(5),
 .research-card:nth-child(6) { border-bottom: none; }
 .research-card:hover { background: var(--orange-pale); }
-.research-card.featured {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center; gap: 10px;
-  background: var(--orange-pale);
-}
 
 .research-num {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px; color: var(--orange);
+  font-size: 13px; color: var(--orange);
   letter-spacing: 0.15em; margin-bottom: 10px;
 }
 .research-card h3 {
   font-family: 'Libre Baskerville', serif;
-  font-size: 19px; font-weight: 700;
+  font-size: 20px; font-weight: 700;
   margin-bottom: 10px; line-height: 1.35;
 }
-.research-card .en { font-size: 12.5px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.06em; margin-bottom: 10px; }
-.research-card p { font-size: 14.5px; color: var(--muted); line-height: 1.7; }
+.research-card .en {
+  font-size: 13.5px; color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.05em; margin-bottom: 10px;
+}
+/* Hide English subtitle in EN mode (h3 already shows English) */
+[lang="en"] .research-card .en { display: none; }
+
+.research-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
 .research-card ul { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
 .research-card ul li {
-  font-size: 14px; color: var(--muted);
+  font-size: 15px; color: var(--muted);
   padding-left: 14px; position: relative;
 }
 .research-card ul li::before { content: '·'; position: absolute; left: 0; color: var(--orange); }
@@ -214,23 +230,23 @@ h2 { font-family: 'Libre Baskerville', serif; font-size: 38px; font-weight: 400;
 .pub-item:hover { background: var(--orange-pale); padding: 22px 16px; margin: 0 -16px; border-radius: 2px; border-color: transparent; }
 .pub-num {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px; color: var(--orange);
+  font-size: 13px; color: var(--orange);
   padding-top: 2px; letter-spacing: 0.12em;
 }
 .pub-title {
   font-family: 'Libre Baskerville', serif;
-  font-size: 17px; font-weight: 700; margin-bottom: 6px; line-height: 1.45;
+  font-size: 17.5px; font-weight: 700; margin-bottom: 6px; line-height: 1.45;
 }
-.pub-authors { font-size: 14px; color: var(--muted); margin-bottom: 5px; }
+.pub-authors { font-size: 15px; color: var(--muted); margin-bottom: 5px; }
 .pub-authors strong { color: var(--navy); }
-.pub-journal { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--blue); }
+.pub-journal { font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; color: var(--blue); }
 .pub-badges { display: flex; gap: 7px; margin-top: 9px; flex-wrap: wrap; }
 .badge {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px; padding: 2px 9px; letter-spacing: 0.05em;
+  font-size: 12.5px; padding: 3px 10px; letter-spacing: 0.05em;
 }
 .badge-year { background: var(--cream-2); color: var(--muted); border: 1px solid var(--border); }
-.badge-doi { background: var(--blue-pale); color: var(--blue); text-decoration: none; border: 1px solid rgba(42,88,133,0.2); }
+.badge-doi { background: var(--blue-pale); color: var(--blue); text-decoration: none; border: 1px solid rgba(42,107,88,0.25); }
 .badge-doi:hover { background: var(--blue); color: white; }
 
 /* TIMELINE */
@@ -248,12 +264,12 @@ h2 { font-family: 'Libre Baskerville', serif; font-size: 38px; font-weight: 400;
 }
 .timeline-period {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px; color: var(--orange);
+  font-size: 13px; color: var(--orange);
   letter-spacing: 0.12em; margin-bottom: 6px;
 }
-.timeline-role { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-.timeline-org { font-size: 15px; color: var(--muted); margin-bottom: 8px; }
-.timeline-desc { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 580px; }
+.timeline-role { font-family: 'Libre Baskerville', serif; font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+.timeline-org { font-size: 16px; color: var(--muted); margin-bottom: 8px; }
+.timeline-desc { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 580px; }
 
 /* EDUCATION */
 .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -262,41 +278,24 @@ h2 { font-family: 'Libre Baskerville', serif; font-size: 38px; font-weight: 400;
   border-top: 3px solid var(--navy); padding: 28px;
 }
 .edu-degree { font-family: 'Libre Baskerville', serif; font-size: 32px; font-weight: 700; color: var(--orange); margin-bottom: 10px; }
-.edu-school { font-weight: 500; font-size: 16px; margin-bottom: 3px; }
-.edu-dept { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
-.edu-period { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
-
-/* PRESENTATIONS */
-.pres-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.pres-item {
-  background: var(--cream); border: 1px solid var(--border);
-  border-left: 3px solid var(--orange); padding: 16px 18px;
-}
-.pres-year { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--orange); margin-bottom: 6px; }
-.pres-title { font-size: 15px; font-weight: 500; margin-bottom: 5px; line-height: 1.45; }
-.pres-venue { font-size: 13px; color: var(--muted); }
-.pres-type {
-  display: inline-block; margin-top: 7px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px; padding: 2px 8px; letter-spacing: 0.08em;
-  background: var(--blue-pale); color: var(--blue);
-  border: 1px solid rgba(42,88,133,0.2);
-}
+.edu-school { font-weight: 500; font-size: 17px; margin-bottom: 3px; }
+.edu-dept { font-size: 15px; color: var(--muted); margin-bottom: 10px; }
+.edu-period { font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; color: var(--muted); }
 
 /* TEACHING */
 .courses-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
 .course-group h3 {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px; color: var(--orange); letter-spacing: 0.18em;
+  font-size: 13px; color: var(--orange); letter-spacing: 0.16em;
   margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
 }
 .course-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-.course-list li { font-size: 15px; color: var(--muted); padding-left: 18px; position: relative; }
-.course-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-size: 12px; }
+.course-list li { font-size: 16px; color: var(--muted); padding-left: 18px; position: relative; }
+.course-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-size: 13px; }
 
 /* CONTACT */
 #contact { background: var(--navy); }
-#contact .section-num { color: #e07040; }
+#contact .section-num { color: var(--orange-light); }
 #contact h2 { color: var(--cream); }
 #contact .section-line { background: rgba(255,255,255,0.1); }
 
@@ -304,15 +303,15 @@ h2 { font-family: 'Libre Baskerville', serif; font-size: 38px; font-weight: 400;
 .contact-intro {
   font-family: 'Libre Baskerville', serif;
   font-size: 21px; font-style: italic; font-weight: 400;
-  color: rgba(244,239,228,0.65); line-height: 1.65; margin-bottom: 32px;
+  color: rgba(243,238,216,0.65); line-height: 1.65; margin-bottom: 32px;
 }
 .contact-items { display: flex; flex-direction: column; gap: 18px; }
 .contact-row { display: flex; align-items: flex-start; gap: 14px; }
 .contact-tag {
-  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
-  color: #e07040; letter-spacing: 0.12em; margin-top: 3px; white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace; font-size: 13px;
+  color: var(--orange-light); letter-spacing: 0.12em; margin-top: 3px; white-space: nowrap;
 }
-.contact-val { font-size: 15px; color: rgba(244,239,228,0.75); }
+.contact-val { font-size: 15.5px; color: rgba(243,238,216,0.75); }
 .contact-val a { color: inherit; text-decoration: none; }
 .contact-val a:hover { color: var(--cream); }
 
@@ -322,19 +321,19 @@ h2 { font-family: 'Libre Baskerville', serif; font-size: 38px; font-weight: 400;
   padding: 16px 20px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.09);
-  text-decoration: none; color: rgba(244,239,228,0.75);
-  font-size: 15px; transition: all 0.18s;
+  text-decoration: none; color: rgba(243,238,216,0.75);
+  font-size: 15.5px; transition: all 0.18s;
 }
-.ext-link:hover { background: rgba(200,90,30,0.2); border-color: var(--orange-light); color: var(--cream); }
+.ext-link:hover { background: rgba(139,105,20,0.2); border-color: var(--orange-light); color: var(--cream); }
 .ext-link-inner { display: flex; align-items: center; gap: 12px; }
 .ext-tag {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px; color: #e07040; letter-spacing: 0.12em;
+  font-size: 13px; color: var(--orange-light); letter-spacing: 0.12em;
 }
 .ext-arrow { opacity: 0.3; font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
 
 footer {
-  background: #0f1620;
+  background: #111e16;
   padding: 22px 100px;
   display: flex; align-items: center; justify-content: space-between;
   position: relative; z-index: 1;
@@ -345,16 +344,52 @@ footer {
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
+/* HAMBURGER */
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 4px; margin-left: 8px;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--navy); transition: all 0.22s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-mobile-overlay {
+  display: none; position: fixed; inset: 56px 0 0 0; z-index: 99;
+  background: rgba(243,238,216,0.97); backdrop-filter: blur(10px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+}
+.nav-mobile-overlay.open { display: flex; }
+.nav-mobile-overlay a {
+  font-family: 'IBM Plex Mono', monospace; font-size: 18px;
+  letter-spacing: 0.12em; color: var(--navy); text-decoration: none;
+  transition: color 0.18s;
+}
+.nav-mobile-overlay a:hover { color: var(--orange); }
+.nav-mobile-overlay .lang-toggle { margin-top: 8px; }
+
+/* NAV right group */
+.nav-right { display: flex; align-items: center; gap: 0; }
+
 @media (max-width: 960px) {
   header { padding: 100px 32px 60px; }
   header::after { display: none; }
-  section { padding: 72px 32px; }
-  nav { padding: 0 24px; }
-  .nav-links { gap: 18px; }
+  section { padding: 64px 24px; }
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
   .research-grid { grid-template-columns: 1fr; border: none; }
   .research-card { border: 1px solid var(--border); border-left: 3px solid var(--orange); margin-bottom: 8px; }
-  .edu-grid, .pres-list, .courses-grid, .contact-layout { grid-template-columns: 1fr; }
-  footer { padding: 20px 32px; flex-direction: column; gap: 6px; text-align: center; }
+  .edu-grid, .courses-grid, .contact-layout { grid-template-columns: 1fr; }
+  .contact-layout { gap: 36px; }
+  footer { padding: 20px 24px; flex-direction: column; gap: 6px; text-align: center; }
+  h1 { font-size: clamp(28px, 7vw, 52px); }
+  .hero-chinese { font-size: clamp(28px, 7vw, 52px); }
+  h2 { font-size: 30px; }
+  .lang-toggle { margin-left: 0; }
 }
 </style>
 </head>
@@ -363,24 +398,45 @@ footer {
 <nav>
   <a href="#" class="nav-logo">CC LIAO · 廖振成</a>
   <ul class="nav-links">
-    <li><a href="#research">Research</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#teaching">Teaching</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+    <li><a href="#teaching" data-i18n="nav.teaching">Teaching</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="btn-en active" onclick="setLang('en')">EN</button>
+      <button class="btn-zh" onclick="setLang('zh')">中</button>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<div class="nav-mobile-overlay" id="mobileMenu">
+  <a href="#research" class="mobile-link" data-i18n="nav.research">Research</a>
+  <a href="#publications" class="mobile-link" data-i18n="nav.publications">Publications</a>
+  <a href="#experience" class="mobile-link" data-i18n="nav.experience">Experience</a>
+  <a href="#teaching" class="mobile-link" data-i18n="nav.teaching">Teaching</a>
+  <a href="#contact" class="mobile-link" data-i18n="nav.contact">Contact</a>
+  <div class="lang-toggle">
+    <button class="btn-en active" onclick="setLang('en')">EN</button>
+    <button class="btn-zh" onclick="setLang('zh')">中</button>
+  </div>
+</div>
 
 <!-- HERO -->
 <header>
   <div class="hero-text">
-    <div class="hero-badge">ASSISTANT PROFESSOR · FU JEN CATHOLIC UNIVERSITY</div>
+    <div class="hero-badge" data-i18n="hero.badge">ASSISTANT PROFESSOR · FU JEN CATHOLIC UNIVERSITY</div>
     <div class="hero-chinese">廖振成</div>
-    <h1>Chen-Cheng<br><em>Liao</em></h1>
-    <p class="hero-subtitle">COMPUTATIONAL CHEMISTRY &amp; MATERIALS MODELING</p>
+    <h1>Chen-Cheng Liao</h1>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">COMPUTATIONAL CHEMISTRY &amp; MATERIALS MODELING</p>
 
     <div class="hero-info">
-      <div class="info-row"><span class="info-dot">▸</span><span>Department of Chemistry, Fu Jen Catholic University</span></div>
+      <div class="info-row"><span class="info-dot">▸</span><span data-i18n="hero.dept">Department of Chemistry, Fu Jen Catholic University</span></div>
       <div class="info-row"><span class="info-dot">▸</span><span id="hero-email"></span></div>
     </div>
 
@@ -394,8 +450,8 @@ footer {
     </div>
 
     <div class="hero-cta">
-      <a href="#publications" class="btn btn-primary">Publications</a>
-      <a href="#contact" class="btn btn-outline">Contact</a>
+      <a href="#publications" class="btn btn-primary" data-i18n="hero.cta.pubs">Publications</a>
+      <a href="#contact" class="btn btn-outline" data-i18n="hero.cta.contact">Contact</a>
     </div>
   </div>
 </header>
@@ -404,56 +460,55 @@ footer {
 <section id="research">
   <div class="section-header reveal">
     <span class="section-num">01</span>
-    <h2>Research Interests</h2>
+    <h2 data-i18n="sec.research">Research Interests</h2>
     <div class="section-line"></div>
   </div>
 
-  <p class="research-intro reveal">
-    本實驗室的研究以<strong>計算化學與材料模擬</strong>為核心，結合理論計算、材料設計與資料分析，探討能源、催化與新穎材料的性質與反應機制。透過電腦模擬，從原子與分子層級理解材料如何運作，並進一步協助設計更有效率的功能材料。
+  <p class="research-intro reveal" data-i18n-html="research.intro">
+    Our lab focuses on <strong>computational chemistry and materials simulation</strong>, combining theoretical calculations, materials design, and data analysis to investigate the properties and reaction mechanisms of energy materials, catalytic systems, and novel functional materials. Through atomistic simulations, we seek to understand how materials behave at the atomic and molecular scale—and to guide the rational design of more efficient functional materials.
   </p>
 
   <div class="research-grid">
     <div class="research-card reveal">
       <div class="research-num">01 ·</div>
-      <h3>高熵材料與高熵合金設計</h3>
-      <div class="en">High-Entropy Materials & Alloy Design</div>
-      <p>高熵材料由多種元素共同組成，具有複雜但可調控的結構與性質。本實驗室利用計算模擬研究高熵合金的原子排列、表面結構與反應行為，了解不同元素組合如何影響材料穩定性與催化效能，作為未來新材料設計的依據。</p>
+      <h3 data-i18n="rc1.title">High-Entropy Materials &amp; Alloy Design</h3>
+      <div class="en">High-Entropy Materials &amp; Alloy Design</div>
+      <p data-i18n="rc1.body">High-entropy materials composed of multiple principal elements exhibit complex yet tunable structures and properties. We use computational simulations to study atomic arrangements, surface structures, and reaction behavior in HEAs, elucidating how elemental combinations affect stability and catalytic performance.</p>
     </div>
 
     <div class="research-card reveal">
       <div class="research-num">02 ·</div>
-      <h3>能源催化與電化學反應機制</h3>
-      <div class="en">Energy Catalysis & Electrochemical Mechanisms</div>
-      <p>關注與永續能源相關的重要反應，了解催化劑表面在反應中扮演的角色，找出能提升反應效率的結構與活性位點：</p>
+      <h3 data-i18n="rc2.title">Energy Catalysis &amp; Electrochemical Mechanisms</h3>
+      <div class="en">Energy Catalysis &amp; Electrochemical Mechanisms</div>
+      <p data-i18n="rc2.body">We focus on key reactions in sustainable energy conversion, investigating catalyst surface roles and identifying active sites that enhance efficiency:</p>
       <ul>
-        <li>產氫反應（HER）</li>
-        <li>氧析出反應（OER）</li>
-        <li>二氧化碳還原反應（CO₂RR）</li>
-        <li>尿素氧化反應（UOR）</li>
+        <li>HER — Hydrogen Evolution Reaction</li>
+        <li>OER — Oxygen Evolution Reaction</li>
+        <li>CO₂RR — CO₂ Reduction Reaction</li>
+        <li>UOR — Urea Oxidation Reaction</li>
       </ul>
     </div>
 
     <div class="research-card reveal">
       <div class="research-num">03 ·</div>
-      <h3>奈米材料與表面反應</h3>
-      <div class="en">Nanomaterials & Surface Reactivity</div>
-      <p>研究奈米顆粒、雙金屬奈米團簇、核殼結構等材料，探討在催化反應中的選擇性與活性，理解不同表面結構如何改變反應路徑與產物分布。</p>
+      <h3 data-i18n="rc3.title">Nanomaterials &amp; Surface Reactivity</h3>
+      <div class="en">Nanomaterials &amp; Surface Reactivity</div>
+      <p data-i18n="rc3.body">We study nanoparticles, bimetallic nanoclusters, and core–shell structures to probe catalytic selectivity and activity, seeking to understand how surface geometry alters reaction pathways and product distributions.</p>
     </div>
 
     <div class="research-card reveal">
       <div class="research-num">04 ·</div>
-      <h3>第一原理計算與材料模擬</h3>
-      <div class="en">First-Principles Calculation & Simulation</div>
-      <p>主要使用密度泛函理論（DFT）從電子結構層級研究材料性質，回答：為何某種材料較穩定、為何某個位點反應活性較高、不同元素摻雜後電子結構如何改變。</p>
+      <h3 data-i18n="rc4.title">First-Principles Calculation &amp; Simulation</h3>
+      <div class="en">First-Principles Calculation &amp; Simulation</div>
+      <p data-i18n="rc4.body">Using density functional theory (DFT) at the electronic-structure level to address: why a material is more stable, why a specific site is more reactive, and how elemental doping reshapes the electronic structure.</p>
     </div>
 
     <div class="research-card reveal">
       <div class="research-num">05 ·</div>
-      <h3>機器學習與資料驅動材料設計</h3>
+      <h3 data-i18n="rc5.title">Machine Learning for Materials Discovery</h3>
       <div class="en">Machine Learning for Materials Discovery</div>
-      <p>整合機器學習於化學與材料研究，利用資料分析與模型建立加速材料篩選與性質預測，在大量可能的材料組合中，更快找到值得深入研究的候選材料。</p>
+      <p data-i18n="rc5.body">Integrating machine learning with chemistry and materials science to accelerate screening and property prediction, identifying promising candidates from vast compositional spaces.</p>
     </div>
-
   </div>
 </section>
 
@@ -461,7 +516,7 @@ footer {
 <section id="publications">
   <div class="section-header reveal">
     <span class="section-num">02</span>
-    <h2>Publications</h2>
+    <h2 data-i18n="sec.publications">Publications</h2>
     <div class="section-line"></div>
   </div>
 
@@ -484,7 +539,7 @@ footer {
       <div>
         <div class="pub-title">Simultaneously Boosting Direct and Indirect Urea Oxidation of Nickel Hydroxide via Strategic Yttrium Doping</div>
         <div class="pub-authors">Tzu-Ho Wu*, Bo-Wei Hou, Yi-Ying Lee, Meng-Che Tsai, <strong>Chen-Cheng Liao</strong>, Chun-Chih Chang</div>
-        <div class="pub-journal">ACS Applied Materials & Interfaces</div>
+        <div class="pub-journal">ACS Applied Materials &amp; Interfaces</div>
         <div class="pub-badges">
           <span class="badge badge-year">2024</span>
           <a href="https://doi.org/10.1021/acsami.4c11951" class="badge badge-doi" target="_blank">DOI: 10.1021/acsami.4c11951</a>
@@ -584,32 +639,25 @@ footer {
 <section id="experience">
   <div class="section-header reveal">
     <span class="section-num">03</span>
-    <h2>Experience</h2>
+    <h2 data-i18n="sec.experience">Experience</h2>
     <div class="section-line"></div>
   </div>
   <div class="timeline">
     <div class="timeline-item reveal">
       <div class="timeline-period">2026.02 — PRESENT</div>
-      <div class="timeline-role">Assistant Professor</div>
-      <div class="timeline-org">Department of Chemistry, Fu Jen Catholic University（輔仁大學化學系）</div>
+      <div class="timeline-role" data-i18n="exp1.role">Assistant Professor</div>
+      <div class="timeline-org" data-i18n="exp1.org">Department of Chemistry, Fu Jen Catholic University（輔仁大學化學系）</div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-period">2024.08 — 2026.01</div>
-      <div class="timeline-role">Assistant Professor</div>
-      <div class="timeline-org">Dept. of Chemical and Materials Engineering, Chinese Culture University（中國文化大學）</div>
-      <div class="timeline-desc">NSTC-funded project: High-Entropy Pt Alloys — A Distribution-Based DFT–Microkinetic Study<br>NSTC 114-2113-M-034-001-MY2 (2025.06 – 2027.05)</div>
+      <div class="timeline-role" data-i18n="exp2.role">Assistant Professor</div>
+      <div class="timeline-org" data-i18n="exp2.org">Dept. of Chemical and Materials Engineering, Chinese Culture University（中國文化大學）</div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-period">2023.12 — 2024.07</div>
-      <div class="timeline-role">Postdoctoral Researcher</div>
-      <div class="timeline-org">Dept. of Chemical and Materials Engineering, Chinese Culture University</div>
-      <div class="timeline-desc">CO₂ reduction selectivity on Fe–Cu clusters/CNT; C–N coupling for urea electrosynthesis using Cu–Ru core–shell nanoparticles.</div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-period">2019.02 — 2023.11</div>
-      <div class="timeline-role">PhD Researcher</div>
-      <div class="timeline-org">Department of Chemistry, NTNU · Advisor: Prof. Ming-Kang Tsai</div>
-      <div class="timeline-desc">First-principles modeling of functional materials: single-atom catalysis for CO/CO₂ reduction, field-dependent explicit-solvent simulations, dielectric and optical physics of tin-halide perovskites.</div>
+      <div class="timeline-role" data-i18n="exp3.role">Postdoctoral Researcher</div>
+      <div class="timeline-org" data-i18n="exp3.org">Dept. of Chemical and Materials Engineering, Chinese Culture University</div>
+      <div class="timeline-desc" data-i18n="exp3.desc">CO₂ reduction selectivity on Fe–Cu clusters/CNT; C–N coupling for urea electrosynthesis using Cu–Ru core–shell nanoparticles.</div>
     </div>
   </div>
 </section>
@@ -618,26 +666,26 @@ footer {
 <section id="education">
   <div class="section-header reveal">
     <span class="section-num">04</span>
-    <h2>Education</h2>
+    <h2 data-i18n="sec.education">Education</h2>
     <div class="section-line"></div>
   </div>
   <div class="edu-grid">
     <div class="edu-card reveal">
       <div class="edu-degree">Ph.D.</div>
-      <div class="edu-school">National Taiwan Normal University</div>
-      <div class="edu-dept">Department of Chemistry</div>
+      <div class="edu-school" data-i18n="edu.school">National Taiwan Normal University</div>
+      <div class="edu-dept" data-i18n="edu.dept">Department of Chemistry</div>
       <div class="edu-period">2019.02 – 2023.11</div>
     </div>
     <div class="edu-card reveal">
       <div class="edu-degree">M.Sc.</div>
-      <div class="edu-school">National Taiwan Normal University</div>
-      <div class="edu-dept">Department of Chemistry</div>
+      <div class="edu-school" data-i18n="edu.school">National Taiwan Normal University</div>
+      <div class="edu-dept" data-i18n="edu.dept">Department of Chemistry</div>
       <div class="edu-period">2015.09 – 2019.01</div>
     </div>
     <div class="edu-card reveal">
       <div class="edu-degree">B.Sc.</div>
-      <div class="edu-school">National Taiwan Normal University</div>
-      <div class="edu-dept">Department of Chemistry</div>
+      <div class="edu-school" data-i18n="edu.school">National Taiwan Normal University</div>
+      <div class="edu-dept" data-i18n="edu.dept">Department of Chemistry</div>
       <div class="edu-period">2011.09 – 2015.06</div>
     </div>
   </div>
@@ -646,45 +694,52 @@ footer {
 <!-- TEACHING -->
 <section id="teaching">
   <div class="section-header reveal">
-    <span class="section-num">06</span>
-    <h2>Teaching</h2>
+    <span class="section-num">05</span>
+    <h2 data-i18n="sec.teaching">Teaching</h2>
     <div class="section-line"></div>
   </div>
   <div class="courses-grid">
     <div class="course-group reveal">
-      <h3>2025 SPRING (FEB – JUN)</h3>
+      <h3 data-i18n="t.2026s">2026 SPRING (FEB – JUN)</h3>
       <ul class="course-list">
-        <li>Physical Chemistry <em>(EMI)</em></li>
-        <li>Organic Chemistry</li>
-        <li>Polymer Physics and Chemistry</li>
-        <li>Introduction to Renewable Energy</li>
-        <li>Development and Application for Solar Cells</li>
+        <li data-i18n="c.2026s.1">Physical Chemistry I (Quantum)</li>
+        <li data-i18n="c.2026s.2">Advanced Physical Chemistry (Computational Chemistry)</li>
       </ul>
     </div>
     <div class="course-group reveal">
-      <h3>2025 FALL (SEP – DEC)</h3>
+      <h3 data-i18n="t.2025s">2025 SPRING (FEB – JUN)</h3>
       <ul class="course-list">
-        <li>Organic Chemistry</li>
-        <li>Instrumental Analysis (A &amp; B)</li>
-        <li>Intro to Chemical and Materials Engineering</li>
-        <li>Introduction to Renewable Energy</li>
+        <li data-i18n-html="c.2025s.1">Physical Chemistry <em>(EMI)</em></li>
+        <li data-i18n="c.2025s.2">Organic Chemistry</li>
+        <li data-i18n="c.2025s.3">Polymer Physics and Chemistry</li>
+        <li data-i18n="c.2025s.4">Introduction to Renewable Energy</li>
+        <li data-i18n="c.2025s.5">Development and Application for Solar Cells</li>
       </ul>
     </div>
     <div class="course-group reveal">
-      <h3>2024 FALL (SEP – DEC)</h3>
+      <h3 data-i18n="t.2025f">2025 FALL (SEP – DEC)</h3>
       <ul class="course-list">
-        <li>Physical Chemistry <em>(EMI)</em></li>
-        <li>Organic Chemistry</li>
-        <li>Intro to Chemical and Materials Engineering</li>
-        <li>Understanding Green Energy</li>
-        <li>Introduction to Energy Sources</li>
+        <li data-i18n="c.2025f.1">Organic Chemistry</li>
+        <li data-i18n-html="c.2025f.2">Instrumental Analysis (A &amp; B)</li>
+        <li data-i18n="c.2025f.3">Intro to Chemical and Materials Engineering</li>
+        <li data-i18n="c.2025f.4">Introduction to Renewable Energy</li>
       </ul>
     </div>
     <div class="course-group reveal">
-      <h3>INSTITUTIONS</h3>
+      <h3 data-i18n="t.2024f">2024 FALL (SEP – DEC)</h3>
       <ul class="course-list">
-        <li>Fu Jen Catholic University（2026.02 –）</li>
-        <li>Chinese Culture University（2024.08 – 2026.01）</li>
+        <li data-i18n-html="c.2024f.1">Physical Chemistry <em>(EMI)</em></li>
+        <li data-i18n="c.2024f.2">Organic Chemistry</li>
+        <li data-i18n="c.2024f.3">Intro to Chemical and Materials Engineering</li>
+        <li data-i18n="c.2024f.4">Understanding Green Energy</li>
+        <li data-i18n="c.2024f.5">Introduction to Energy Sources</li>
+      </ul>
+    </div>
+    <div class="course-group reveal">
+      <h3 data-i18n="t.inst">INSTITUTIONS</h3>
+      <ul class="course-list">
+        <li data-i18n="inst.1">Fu Jen Catholic University（2026.02 –）</li>
+        <li data-i18n="inst.2">Chinese Culture University（2024.08 – 2026.01）</li>
       </ul>
     </div>
   </div>
@@ -693,21 +748,21 @@ footer {
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header reveal">
-    <span class="section-num">07</span>
-    <h2>Contact</h2>
+    <span class="section-num">06</span>
+    <h2 data-i18n="sec.contact">Contact</h2>
     <div class="section-line"></div>
   </div>
   <div class="contact-layout">
     <div>
-      <p class="contact-intro">Open to collaborations in computational electrochemistry, DFT-based catalyst design, and theory–experiment joint projects.</p>
+      <p class="contact-intro" data-i18n="contact.intro">Open to collaborations in computational electrochemistry, DFT-based catalyst design, and theory–experiment joint projects.</p>
       <div class="contact-items">
         <div class="contact-row">
-          <span class="contact-tag">EMAIL</span>
+          <span class="contact-tag" data-i18n="contact.email.tag">EMAIL</span>
           <div class="contact-val" id="contact-email"></div>
         </div>
         <div class="contact-row">
-          <span class="contact-tag">DEPT</span>
-          <div class="contact-val">Department of Chemistry<br>Fu Jen Catholic University, Taiwan</div>
+          <span class="contact-tag" data-i18n="contact.dept.tag">DEPT</span>
+          <div class="contact-val" data-i18n-html="contact.dept.val">Department of Chemistry<br>Fu Jen Catholic University, Taiwan</div>
         </div>
       </div>
     </div>
@@ -735,18 +790,213 @@ footer {
 
 
 <script>
-// Email: built dynamically to prevent scraping
+// ── Translations ──────────────────────────────────────────────
+const T = {
+  en: {
+    // Nav
+    'nav.research':      'Research',
+    'nav.publications':  'Publications',
+    'nav.experience':    'Experience',
+    'nav.teaching':      'Teaching',
+    'nav.contact':       'Contact',
+    // Hero
+    'hero.badge':        'ASSISTANT PROFESSOR · FU JEN CATHOLIC UNIVERSITY',
+    'hero.subtitle':     'COMPUTATIONAL CHEMISTRY & MATERIALS MODELING',
+    'hero.dept':         'Department of Chemistry, Fu Jen Catholic University',
+    'hero.cta.pubs':     'Publications',
+    'hero.cta.contact':  'Contact',
+    // Section headings
+    'sec.research':      'Research Interests',
+    'sec.publications':  'Publications',
+    'sec.experience':    'Experience',
+    'sec.education':     'Education',
+    'sec.teaching':      'Teaching',
+    'sec.contact':       'Contact',
+    // Research intro
+    'research.intro':    'Our lab focuses on <strong>computational chemistry and materials simulation</strong>, combining theoretical calculations, materials design, and data analysis to investigate the properties and reaction mechanisms of energy materials, catalytic systems, and novel functional materials. Through atomistic simulations, we seek to understand how materials behave at the atomic and molecular scale—and to guide the rational design of more efficient functional materials.',
+    // Research cards
+    'rc1.title':  'High-Entropy Materials & Alloy Design',
+    'rc1.body':   'High-entropy materials composed of multiple principal elements exhibit complex yet tunable structures and properties. We use computational simulations to study atomic arrangements, surface structures, and reaction behavior in HEAs, elucidating how elemental combinations affect stability and catalytic performance.',
+    'rc2.title':  'Energy Catalysis & Electrochemical Mechanisms',
+    'rc2.body':   'We focus on key reactions in sustainable energy conversion, investigating catalyst surface roles and identifying active sites that enhance efficiency:',
+    'rc3.title':  'Nanomaterials & Surface Reactivity',
+    'rc3.body':   'We study nanoparticles, bimetallic nanoclusters, and core–shell structures to probe catalytic selectivity and activity, seeking to understand how surface geometry alters reaction pathways and product distributions.',
+    'rc4.title':  'First-Principles Calculation & Simulation',
+    'rc4.body':   'Using density functional theory (DFT) at the electronic-structure level to address: why a material is more stable, why a specific site is more reactive, and how elemental doping reshapes the electronic structure.',
+    'rc5.title':  'Machine Learning for Materials Discovery',
+    'rc5.body':   'Integrating machine learning with chemistry and materials science to accelerate screening and property prediction, identifying promising candidates from vast compositional spaces.',
+    // Experience
+    'exp1.role':  'Assistant Professor',
+    'exp1.org':   'Department of Chemistry, Fu Jen Catholic University（輔仁大學化學系）',
+    'exp2.role':  'Assistant Professor',
+    'exp2.org':   'Dept. of Chemical and Materials Engineering, Chinese Culture University（中國文化大學）',
+    'exp3.role':  'Postdoctoral Researcher',
+    'exp3.org':   'Dept. of Chemical and Materials Engineering, Chinese Culture University',
+    'exp3.desc':  'CO₂ reduction selectivity on Fe–Cu clusters/CNT; C–N coupling for urea electrosynthesis using Cu–Ru core–shell nanoparticles.',
+    // Education
+    'edu.school': 'National Taiwan Normal University',
+    'edu.dept':   'Department of Chemistry',
+    // Teaching headers
+    't.2026s':  '2026 SPRING (FEB – JUN)',
+    't.2025s':  '2025 SPRING (FEB – JUN)',
+    't.2025f':  '2025 FALL (SEP – DEC)',
+    't.2024f':  '2024 FALL (SEP – DEC)',
+    't.inst':   'INSTITUTIONS',
+    // 2026 Spring courses
+    'c.2026s.1': 'Physical Chemistry I (Quantum)',
+    'c.2026s.2': 'Advanced Physical Chemistry (Computational Chemistry)',
+    // 2025 Spring
+    'c.2025s.1': 'Physical Chemistry <em>(EMI)</em>',
+    'c.2025s.2': 'Organic Chemistry',
+    'c.2025s.3': 'Polymer Physics and Chemistry',
+    'c.2025s.4': 'Introduction to Renewable Energy',
+    'c.2025s.5': 'Development and Application for Solar Cells',
+    // 2025 Fall
+    'c.2025f.1': 'Organic Chemistry',
+    'c.2025f.2': 'Instrumental Analysis (A &amp; B)',
+    'c.2025f.3': 'Intro to Chemical and Materials Engineering',
+    'c.2025f.4': 'Introduction to Renewable Energy',
+    // 2024 Fall
+    'c.2024f.1': 'Physical Chemistry <em>(EMI)</em>',
+    'c.2024f.2': 'Organic Chemistry',
+    'c.2024f.3': 'Intro to Chemical and Materials Engineering',
+    'c.2024f.4': 'Understanding Green Energy',
+    'c.2024f.5': 'Introduction to Energy Sources',
+    // Institutions
+    'inst.1': 'Fu Jen Catholic University（2026.02 –）',
+    'inst.2': 'Chinese Culture University（2024.08 – 2026.01）',
+    // Contact
+    'contact.intro':     'Open to collaborations in computational electrochemistry, DFT-based catalyst design, and theory–experiment joint projects.',
+    'contact.email.tag': 'EMAIL',
+    'contact.dept.tag':  'DEPT',
+    'contact.dept.val':  'Department of Chemistry<br>Fu Jen Catholic University, Taiwan',
+  },
+
+  zh: {
+    // Nav
+    'nav.research':      '研究',
+    'nav.publications':  '著作',
+    'nav.experience':    '經歷',
+    'nav.teaching':      '教學',
+    'nav.contact':       '聯絡',
+    // Hero
+    'hero.badge':        '助理教授 · 輔仁大學化學系',
+    'hero.subtitle':     '計算化學與材料模擬',
+    'hero.dept':         '輔仁大學 化學系',
+    'hero.cta.pubs':     '著作列表',
+    'hero.cta.contact':  '聯絡我',
+    // Section headings
+    'sec.research':      '研究方向',
+    'sec.publications':  '期刊著作',
+    'sec.experience':    '學術經歷',
+    'sec.education':     '學歷',
+    'sec.teaching':      '教學',
+    'sec.contact':       '聯絡',
+    // Research intro
+    'research.intro':    '本實驗室的研究以<strong>計算化學與材料模擬</strong>為核心，結合理論計算、材料設計與資料分析，探討能源、催化與新穎材料的性質與反應機制。透過電腦模擬，從原子與分子層級理解材料如何運作，並進一步協助設計更有效率的功能材料。',
+    // Research cards
+    'rc1.title':  '高熵材料與高熵合金設計',
+    'rc1.body':   '高熵材料由多種元素共同組成，具有複雜但可調控的結構與性質。本實驗室利用計算模擬研究高熵合金的原子排列、表面結構與反應行為，了解不同元素組合如何影響材料穩定性與催化效能，作為未來新材料設計的依據。',
+    'rc2.title':  '能源催化與電化學反應機制',
+    'rc2.body':   '關注與永續能源相關的重要反應，了解催化劑表面在反應中扮演的角色，找出能提升反應效率的結構與活性位點：',
+    'rc3.title':  '奈米材料與表面反應',
+    'rc3.body':   '研究奈米顆粒、雙金屬奈米團簇、核殼結構等材料，探討在催化反應中的選擇性與活性，理解不同表面結構如何改變反應路徑與產物分布。',
+    'rc4.title':  '第一原理計算與材料模擬',
+    'rc4.body':   '主要使用密度泛函理論（DFT）從電子結構層級研究材料性質，回答：為何某種材料較穩定、為何某個位點反應活性較高、不同元素摻雜後電子結構如何改變。',
+    'rc5.title':  '機器學習與資料驅動材料設計',
+    'rc5.body':   '整合機器學習於化學與材料研究，利用資料分析與模型建立加速材料篩選與性質預測，在大量可能的材料組合中，更快找到值得深入研究的候選材料。',
+    // Experience
+    'exp1.role':  '助理教授',
+    'exp1.org':   '輔仁大學 化學系',
+    'exp2.role':  '助理教授',
+    'exp2.org':   '中國文化大學 化材系',
+    'exp3.role':  '博士後研究員',
+    'exp3.org':   '中國文化大學 化材系',
+    'exp3.desc':  'Fe–Cu 團簇/碳奈米管上的 CO₂ 還原選擇性；Cu–Ru 核殼奈米顆粒的 C–N 偶聯與尿素電合成。',
+    // Education
+    'edu.school': '國立台灣師範大學',
+    'edu.dept':   '化學系',
+    // Teaching headers
+    't.2026s':  '2026 春季（二月 – 六月）',
+    't.2025s':  '2025 春季（二月 – 六月）',
+    't.2025f':  '2025 秋季（九月 – 十二月）',
+    't.2024f':  '2024 秋季（九月 – 十二月）',
+    't.inst':   '任職機構',
+    // 2026 Spring courses
+    'c.2026s.1': '物理化學一（量子）',
+    'c.2026s.2': '高等物理化學（計算化學）',
+    // 2025 Spring
+    'c.2025s.1': '物理化學 <em>(EMI)</em>',
+    'c.2025s.2': '有機化學',
+    'c.2025s.3': '高分子物理與化學',
+    'c.2025s.4': '再生能源概論',
+    'c.2025s.5': '太陽能電池開發與應用',
+    // 2025 Fall
+    'c.2025f.1': '有機化學',
+    'c.2025f.2': '儀器分析（A &amp; B）',
+    'c.2025f.3': '化學與材料工程概論',
+    'c.2025f.4': '再生能源概論',
+    // 2024 Fall
+    'c.2024f.1': '物理化學 <em>(EMI)</em>',
+    'c.2024f.2': '有機化學',
+    'c.2024f.3': '化學與材料工程概論',
+    'c.2024f.4': '認識綠色能源',
+    'c.2024f.5': '能源概論',
+    // Institutions
+    'inst.1': '輔仁大學（2026.02 –）',
+    'inst.2': '中國文化大學（2024.08 – 2026.01）',
+    // Contact
+    'contact.intro':     '歡迎洽談計算電化學、DFT 催化劑設計及理論與實驗跨域合作計畫。',
+    'contact.email.tag': '電子郵件',
+    'contact.dept.tag':  '單位',
+    'contact.dept.val':  '化學系<br>輔仁大學，台灣',
+  }
+};
+
+// ── Core i18n function ────────────────────────────────────────
+function setLang(lang) {
+  document.getElementById('root').lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const v = T[lang][el.dataset.i18nHtml];
+    if (v !== undefined) el.innerHTML = v;
+  });
+
+  document.querySelectorAll('.btn-en').forEach(b => b.classList.toggle('active', lang === 'en'));
+  document.querySelectorAll('.btn-zh').forEach(b => b.classList.toggle('active', lang === 'zh'));
+
+  try { localStorage.setItem('lang', lang); } catch(e) {}
+}
+
+// ── Email anti-scrape ─────────────────────────────────────────
 (function() {
   var u = '165804', d = 'mail.fju.edu.tw';
   var addr = u + '@' + d;
-  var link = '<a href="mailto:' + addr + '" style="color:inherit">' + addr + '</a>';
   var h = document.getElementById('hero-email');
   var c = document.getElementById('contact-email');
-  if (h) h.innerHTML = link;
-  if (c) c.innerHTML = '<a href="mailto:' + addr + '" style="color:rgba(244,239,228,0.75)">' + addr + '</a>';
+  if (h) h.innerHTML = '<a href="mailto:' + addr + '" style="color:inherit">' + addr + '</a>';
+  if (c) c.innerHTML = '<a href="mailto:' + addr + '" style="color:rgba(243,238,216,0.75)">' + addr + '</a>';
 })();
 
-// Scroll reveal
+// ── Hamburger ────────────────────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// ── Scroll reveal ─────────────────────────────────────────────
 const items = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
@@ -757,6 +1007,13 @@ const obs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0, rootMargin: '0px 0px -30px 0px' });
 items.forEach(el => obs.observe(el));
+
+// ── Init ──────────────────────────────────────────────────────
+(function() {
+  var saved = 'en';
+  try { saved = localStorage.getItem('lang') || 'en'; } catch(e) {}
+  setLang(saved);
+})();
 </script>
 </body>
 </html>
